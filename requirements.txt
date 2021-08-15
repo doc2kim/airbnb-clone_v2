@@ -53,4 +53,5 @@ toml==0.10.2
 tomli==1.2.0
 urllib3==1.25.11
 wcwidth==0.1.9
+psycopg==2.9
 websocket-client==0.59.0
