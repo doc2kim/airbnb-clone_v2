@@ -173,9 +173,9 @@ EMAIL_FROM = EMAIL_HOST_USER
 LOGIN_URL = "/users/login/"
 
 """
-※ mailgun 메일 인증 안됨 
+※ mailgun 메일 인증 안됨
 
-개인 계정으로 한 smtp.gmail.com 메일인증은 이상 없음!!  
+개인 계정으로 한 smtp.gmail.com 메일인증은 이상 없음!!
 
 시행착오를 겪은 결과
  
