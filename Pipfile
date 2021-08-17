@@ -4,7 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pathspec = "*"
 django = "*"
 sentry-sdk = "*"
 pillow = "*"
