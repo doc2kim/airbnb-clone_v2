@@ -4,21 +4,26 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+pathspec = "*"
 django = "*"
-pillow="*"
+sentry-sdk = "*"
+pillow = "*"
 django-countries = "*"
 django-seed = "*"
 django-dotenv = "*"
 requests = "*"
+psycopg2-binary = "*"
+sentry-sdk = "*"
+
 
 [dev-packages]
 flake8 = "*"
 black = "*"
-awsebcli = "*"
-pipenv-to-requirements="*"
+awsebcli= "*"
+pipenv-to-requirements = "*"
 
 [requires]
 python_version = "3.9"
 
 [pipenv]
-allow_prereleases =true
+allow_prereleases = true
