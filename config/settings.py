@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
@@ -28,7 +27,7 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET", "Kt5MPnVPjYQX&wKZoHP3r7!HUxm!go")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get("DEBUG"))
 
-ALLOWED_HOSTS = [".elasticbeanstalk.com", "localhost"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -191,16 +190,23 @@ LOGIN_URL = "/users/login/"
 
 LOCALE_PATHS = (os.path.join(BASE_DIR, "locale"),)
 
-
-# Sentry
-DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-STATICFILES_STORAGE = "storages.backends.s3boto3.S3StaticStorage"
-AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
-AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
-AWS_STORAGE_BUCKET_NAME = "docbnb-doc2kim"
-AWS_DEFAULT_ACL = "public-read"
-
 if not DEBUG:
+
+    # AWS django-storage
+
+    DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+    STATICFILES_STORAGE = "storages.backends.s3boto3.S3StaticStorage"
+    AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+    AWS_STORAGE_BUCKET_NAME = "docbnb-doc2kim"
+    AWS_REGION = "ap-northease-2"
+    AWS_DEFAULT_ACL = "public-read"
+
+    AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max_age=86400"}
+    AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_REGION}.amazonaws.com"
+    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
+
+    # Sentry-sdk
 
     sentry_sdk.init(
         dsn=os.environ.get("SENTRY_URL"),
