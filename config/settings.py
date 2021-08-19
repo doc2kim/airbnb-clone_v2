@@ -27,7 +27,11 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET", "Kt5MPnVPjYQX&wKZoHP3r7!HUxm!go")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get("DEBUG"))
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [
+    ".elasticbeanstalk.com",
+    "localhost",
+    "127.0.0.1",
+]
 
 
 # Application definition
@@ -194,8 +198,8 @@ if not DEBUG:
 
     # AWS django-storage
 
-    DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-    STATICFILES_STORAGE = "storages.backends.s3boto3.S3StaticStorage"
+    DEFAULT_FILE_STORAGE = "config.custom_storages.UploadStorage"
+    STATICFILES_STORAGE = "config.custom_storages.StaticStorage"
     AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
     AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
     AWS_STORAGE_BUCKET_NAME = "docbnb-doc2kim"

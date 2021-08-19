@@ -65,13 +65,6 @@
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4'",
             "version": "==21.2.0"
         },
-        "awsebcli": {
-            "hashes": [
-                "sha256:cb251e804f0b743568cdc699f6d9940c841af676ff367de7c4e1f8e72f8db3a2"
-            ],
-            "index": "pypi",
-            "version": "==3.20.0"
-        },
         "bcrypt": {
             "hashes": [
                 "sha256:5b93c1726e50a93a033c36e5ca7fdcd29a5c7395af50a6892f5d9e7c6cfbfb29",
