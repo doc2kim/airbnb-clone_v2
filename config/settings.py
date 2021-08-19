@@ -27,11 +27,7 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET", "Kt5MPnVPjYQX&wKZoHP3r7!HUxm!go")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get("DEBUG"))
 
-ALLOWED_HOSTS = [
-    ".elasticbeanstalk.com",
-    "localhost",
-    "127.0.0.1",
-]
+ALLOWED_HOSTS = [".elasticbeanstalk.com", "localhost"]
 
 
 # Application definition
@@ -153,7 +149,7 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 AUTH_USER_MODEL = "users.User"
 
@@ -204,8 +200,8 @@ if not DEBUG:
     AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
     AWS_STORAGE_BUCKET_NAME = "docbnb-doc2kim"
     AWS_REGION = "ap-northease-2"
+    AWS_AUTO_CREATE_BUCKET = True
     AWS_DEFAULT_ACL = "public-read"
-
     AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max_age=86400"}
     AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_REGION}.amazonaws.com"
     STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
