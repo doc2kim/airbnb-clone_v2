@@ -149,6 +149,8 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
+STATIC_ROOT = os.path.join(BASE_DIR, "assets")
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
@@ -174,19 +176,6 @@ EMAIL_FROM = EMAIL_HOST_USER
 
 LOGIN_URL = "/users/login/"
 
-"""
-※ mailgun 메일 인증 안됨
-
-개인 계정으로 한 smtp.gmail.com 메일인증은 이상 없음!!
-
-시행착오를 겪은 결과
- 
- 1. code와 logic, .env 연결에는 이상이 없다.
-
- 2. mailgun에서 제공하는 domain과 password를 잘못적었거나 아니라면 mailgun측에 이상이 있다.
-
- 3. mailgun의 접근에 대하여 메일측에서의 보안이 강화되었다.(뇌피셜)
-"""
 
 # Locale
 
@@ -196,13 +185,12 @@ if not DEBUG:
 
     # AWS django-storage
 
-    DEFAULT_FILE_STORAGE = "config.custom_storages.UploadStorage"
-    STATICFILES_STORAGE = "config.custom_storages.StaticStorage"
+    DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+    STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
     AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
     AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
-    AWS_STORAGE_BUCKET_NAME = "docbnb-doc2kim"
+    AWS_STORAGE_BUCKET_NAME = "docbnb-v2-bucket"
     AWS_REGION = "ap-northease-2"
-    AWS_AUTO_CREATE_BUCKET = True
     AWS_DEFAULT_ACL = "public-read"
     AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max_age=86400"}
     AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_REGION}.amazonaws.com"
