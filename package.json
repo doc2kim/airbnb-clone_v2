@@ -1,15 +1,15 @@
 {
-  "name": "airbnb-clone",
+  "name": "airbnb-clone_v2",
   "version": "1.0.0",
-  "description": "Cloning Airbnb with Python, Djang, Tailwind and more....",
+  "description": "Cloning Airbnb with Python, Django, Tailwind and more....",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/doc2kim/airbnb-clone.git"
+    "url": "git+https://github.com/doc2kim/airbnb-clone_v2.git"
   },
   "scripts": {
     "css": "gulp"
   },
-  "homepage": "https://github.com/doc2kim/airbnb-clone#readme",
+  "homepage": "https://github.com/doc2kim/airbnb-clone_v2#readme",
   "devDependencies": {
     "autoprefixer": "^10.3.1",
     "gulp": "^4.0.2",
