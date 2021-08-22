@@ -10,7 +10,4 @@ def on_favs(context, room):
     the_list = list_models.List.objects.get_or_none(
         user=user, name="My Favorites Houses"
     )
-    if the_list is not None:
-        return room in the_list.rooms.all()
-    else:
-        return False
+    return room in the_list.rooms.all()
