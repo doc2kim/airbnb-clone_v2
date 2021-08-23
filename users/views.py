@@ -175,8 +175,9 @@ def kakao_callback(request):
         if email is None:
             raise KakaoException("Please also give me your email")
         properties = profile_json.get("properties")
-        nickname = properties.get("nickname")
-        if nickname is None:
+        if properties.get("nickname") is not None:
+            nickname = properties.get("nickname")
+        else:
             nickname = email
         profile_image = (
             profile_json.get("kakao_account").get("profile").get("profile_image_url")
