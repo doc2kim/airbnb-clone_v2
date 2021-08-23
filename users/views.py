@@ -88,6 +88,7 @@ def github_callback(request):
         client_id = os.environ.get("GH_ID")
         client_secret = os.environ.get("GH_SECRET")
         code = request.GET.get("code", None)
+        print(code)
         if code is not None:
             token_request = requests.post(
                 f"https://github.com/login/oauth/access_token?client_id={client_id}&client_secret={client_secret}&code={code}",
@@ -156,6 +157,7 @@ class KakaoException(Exception):
 def kakao_callback(request):
     try:
         code = request.GET.get("code")
+        print(code)
         client_id = os.environ.get("KAKAO_REST_API_KEY")
         redirect_uri = "http://doc2bnb.eba-pbu7kmnf.ap-northeast-2.elasticbeanstalk.com/users/login/kakao/callback"
         token_request = requests.get(
