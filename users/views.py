@@ -177,6 +177,8 @@ def kakao_callback(request):
         properties = profile_json.get("properties")
         if properties.nickname is not None:
             nickname = properties.get("nickname")
+        else:
+            nickname = "NONE"
         profile_image = properties.get("profile_image")
         try:
             user = models.User.objects.get(email=email)
