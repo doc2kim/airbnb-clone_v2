@@ -174,8 +174,9 @@ def kakao_callback(request):
         email = profile_json.get("kakao_account").get("email", None)
         if email is None:
             raise KakaoException("Please also give me your email")
-        nickname = profile_json.get("nickname")
-        profile_image = profile_json.get("profile_image")
+        properties = profile_json.get("properties")
+        nickname = properties.get("nickname")
+        profile_image = properties.get("profile_image")
         try:
             user = models.User.objects.get(email=email)
             if user.login_method != models.User.LOGIN_KAKAO:
