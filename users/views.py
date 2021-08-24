@@ -175,7 +175,7 @@ def kakao_callback(request):
         if email is None:
             raise KakaoException("Please also give me your email")
         properties = profile_json.get("properties")
-        nickname = properties.get("nickname")
+        nickname = properties.nickname
         profile_image = properties.get("profile_image")
         try:
             user = models.User.objects.get(email=email)
