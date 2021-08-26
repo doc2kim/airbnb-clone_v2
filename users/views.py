@@ -171,19 +171,16 @@ def kakao_callback(request):
             headers={"Authorization": f"Bearer {access_token}"},
         )
         profile_json = profile_request.json()
-        print(profile_json)
         email = profile_json.get("kakao_account").get("email", None)
         if email is None:
             raise KakaoException("Please also give me your email")
         properties = profile_json.get("properties")
-        print(properties)
 
         if properties is not None:
             nickname = properties.get("nickname")
             profile_image = properties.get("profile_image")
         else:
             nickname = email
-            profile_image = profile_json.get("profileImageURL")
         try:
             user = models.User.objects.get(email=email)
             if user.login_method != models.User.LOGIN_KAKAO:
