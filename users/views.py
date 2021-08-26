@@ -178,9 +178,8 @@ def kakao_callback(request):
         if properties is None:
             profile = profile_json.get("kakao_account").get("profile", None)
             if profile is None:
-                raise KakaoException("profile is None")
-            nickname = profile.get("nickname", None)
-            profile_image = profile.get("profile_image_url", None)
+                nickname = None
+                profile_image = None
         else:
             nickname = properties.get("nickname")
             profile_image = properties.get("profile_image")
