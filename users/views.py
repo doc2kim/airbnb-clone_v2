@@ -178,11 +178,12 @@ def kakao_callback(request):
         properties = profile_json.get("properties")
         print(properties)
 
-        if properties is None:
-            raise KakaoException("no information")
-
-        nickname = properties.get("nickname")
-        profile_image = properties.get("profile_image")
+        if properties is not None:
+            nickname = properties.get("nickname")
+            profile_image = properties.get("profile_image")
+        else:
+            nickname = profile_json.get("nickName")
+            profile_image = profile_json.get("profileImageURL")
         try:
             user = models.User.objects.get(email=email)
             if user.login_method != models.User.LOGIN_KAKAO:
