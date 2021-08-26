@@ -181,7 +181,7 @@ def kakao_callback(request):
             profile_image = properties.get("profile_image")
         else:
             nickname = email
-            profile_image = properties.get("profile_image")
+            profile_image = None
         try:
             user = models.User.objects.get(email=email)
             if user.login_method != models.User.LOGIN_KAKAO:
