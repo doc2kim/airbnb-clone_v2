@@ -182,7 +182,7 @@ def kakao_callback(request):
             nickname = properties.get("nickname")
             profile_image = properties.get("profile_image")
         else:
-            nickname = profile_json.get("nickName")
+            nickname = email
             profile_image = profile_json.get("profileImageURL")
         try:
             user = models.User.objects.get(email=email)
