@@ -174,7 +174,7 @@ def kakao_callback(request):
         email = profile_json.get("kakao_account").get("email", None)
         if email is None:
             raise KakaoException("Please also give me your email")
-        profile = profile_json.get("profile")
+        profile = profile_json.get("kakao_account").get("profile")
         if profile is None:
             raise KakaoException(print(profile))
         nickname = profile.get("nickname")
