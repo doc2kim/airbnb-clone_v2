@@ -145,7 +145,7 @@ def kakao_login(request):
     client_id = os.environ.get("KAKAO_REST_API_KEY")
     redirect_uri = "http://doc2bnb.eba-pbu7kmnf.ap-northeast-2.elasticbeanstalk.com/users/login/kakao/callback"
     return redirect(
-        f"https://kauth.kakao.com/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code&scope=account_email"
+        f"https://kauth.kakao.com/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code"
     )
 
 
